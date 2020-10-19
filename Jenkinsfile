@@ -1,9 +1,10 @@
 node {
         stage('Checkout') {
-            git url: 'https://github.com/HarshiniKoduru/RealEstate-Property-angular.git', credentialsId: 'harshi17', branch: 'master'        }
+            git url: 'https://github.com/HarshiniKoduru/Angular-CS.git', credentialsId: 'harshi17', branch: 'main'        }
         stage('Build') {
          
-			bat 'npm run build'
+			bat 'npm install'
+          bat 'ng build'
 	
     }
 }
