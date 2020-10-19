@@ -1,0 +1,60 @@
+
+<h3> Meluha RealEstate - Our Passion is People</h3>
+
+<form>
+  <div class="row">
+    <div class="col-sm-6 text-center">
+      <div class="form-group">
+        <input type="file" class="custom-file-input form-control" id="file" name="myfile" accept=".xlsx,.csv"
+               (change)="onFileSelect($event)" #UploadFileInput>
+        </div>
+      </div>
+    <div class="col-sm-6 ">
+      <div class="form-group">  <button class="btn btn-primary" type="button" (click)="uploadFile();">Upload</button></div>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="count >49">
+
+    <button (click)="getCustomers(0,50,'borrower');">
+      <<
+    </button>
+    <button (click)="getCustomers(1,50,'borrower');">
+      >> 
+    </button>
+  </div>
+  <h1 *ngIf="count >0">
+    Customers who believed in us!!!
+  </h1>
+  <hr>
+ 
+  <table id="customers" *ngIf="count >0">
+    <thead>
+      <tr>
+        <th *ngFor="let header of headers">{{header}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of users">
+        <td>
+          {{customer.loan_number}}
+        </td>
+        <td>
+          {{customer.borrower}}
+        </td>
+        <td>
+          {{customer.property_address}}
+        </td>
+        <td>
+          {{customer.cost}}
+        </td>
+        <td *ngIf="hasFloodRisk">
+          {{customer.flood_risk}}
+        </td>
+        <td>
+          {{customer.date_of_birth}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
